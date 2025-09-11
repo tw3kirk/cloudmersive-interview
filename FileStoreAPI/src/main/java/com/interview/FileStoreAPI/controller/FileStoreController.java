@@ -26,6 +26,9 @@ public class FileStoreController {
             @RequestParam("FilePath") String filePath,
             @RequestParam("ConnectionName") String connectionName)
                 throws IOException {
+        // I made the descision to decode a base64 input into a byte array because 
+        // it's easier to run manual tests using postman and calling `base64 input_file.txt`
+        // It would be trivial to modify this to accept a byte array input.
         byte[] fileBytes = Base64.getDecoder().decode(fileContents);
         if (connectionName.equals("AWS_S3")) {
             s3Service.uploadFile(fileBytes, fileName, filePath);

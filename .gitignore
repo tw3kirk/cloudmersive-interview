@@ -25,3 +25,5 @@ replay_pid*
 
 # Environment files
 .env*
+
+.DS_Store
